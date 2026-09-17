@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="钱家萱的个人主页 —— 脑机接口 × 计算机科学，喜欢折腾小玩意儿的兴趣驱动开发者。">
+  <title>SHAAARK · 一条傻鱼的个人主页</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1. Header（固定顶部） -->
+  <header class="site-header">
+    <a class="brand" href="#top">SHAAARK</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="icon-link" href="https://github.com/Qixx-xx" target="_blank" rel="noopener" aria-label="GitHub 主页">
+      <span aria-hidden="true">⬛</span>
+    </a>
+  </header>
+
+  <main id="top">
+
+    <!-- 2. Hero 首屏 -->
+    <section class="hero" id="home">
+      <h1 class="hero-name">一条傻鱼</h1>
+      <p class="hero-tagline">脑机接口 × 计算机科学，喜欢折腾小玩意儿的开发者</p>
+      <ul class="hero-tags">
+        <li>脑机接口</li>
+        <li>微信小程序</li>
+        <li>大语言模型</li>
+        <li>前端开发</li>
+      </ul>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">查看项目</a>
+        <a class="btn btn-ghost" href="https://github.com/Qixx-xx" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </section>
+
+    <!-- 3. About 关于我 -->
+    <section class="section" id="about">
+      <h2 class="section-title">关于我</h2>
+      <div class="about-grid">
+        <article class="card">
+          <h3>身份</h3>
+          <p>脑机接口专业大一学生</p>
+        </article>
+        <article class="card">
+          <h3>方向</h3>
+          <p>CS / BMI 交叉方向</p>
+        </article>
+        <article class="card">
+          <h3>记忆点</h3>
+          <p>兴趣驱动，万事不求人</p>
+        </article>
+        <article class="card">
+          <h3>所在城市</h3>
+          <p>深圳，中国</p>
+        </article>
+      </div>
+
+      <!-- 5. 兴趣 / 技能（合并到 About 下方） -->
+      <div class="skills">
+        <h3 class="skills-title">兴趣 / 技能</h3>
+        <ul class="tag-cloud">
+          <li>脑机接口</li>
+          <li>微信小程序</li>
+          <li>大语言模型</li>
+          <li>前端开发</li>
+          <li>云开发</li>
+          <li>UI 设计</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. Projects 项目与作品 -->
+    <section class="section" id="projects">
+      <h2 class="section-title">项目与作品</h2>
+
+      <!-- 重点项目：微信小程序 -->
+      <article class="featured">
+        <div class="featured-screenshot">
+          <img src="assets/placeholder.png" alt="宿舍状态栏小程序截图占位图">
+        </div>
+        <div class="featured-info">
+          <h3>宿舍状态栏</h3>
+          <p>一款宿舍状态共享小程序，支持四人状态联动、值日轮换、寝室规定版本管理、意见反馈投票与换床申请，14天内从零到一完成开发。</p>
+          <div class="featured-meta">
+            <span class="featured-badge">微信小程序 · 重点项目</span>
+            <span class="featured-link">小程序码即将上线</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 更多项目（构思中） -->
+      <div class="more-projects">
+        <h3>更多项目 · 构思中</h3>
+        <div class="project-grid">
+          <article class="repo-card">
+            <h4>非线性学习工具</h4>
+            <p>用问问题构建思维导图，用思维导图重构知识体系</p>
+          </article>
+          <article class="repo-card">
+            <h4>词组卡网页版</h4>
+            <p>背词组的极简卡片工具</p>
+          </article>
+          <article class="repo-card">
+            <h4>AI 推理小说互动游戏</h4>
+            <p>如果可以把一本书变成交互式文字游戏</p>
+          </article>
+          <article class="repo-card">
+            <h4>命令行解谜网页游戏</h4>
+            <p>捡到一台 dos 老电脑……</p>
+          </article>
+        </div>
+      </div>
+
+      <a class="github-more" href="https://github.com/Qixx-xx" target="_blank" rel="noopener">
+        <span aria-hidden="true">⬛</span> 访问我的 GitHub 查看全部仓库
+      </a>
+    </section>
+
+    <!-- 6. 开发时间线 -->
+    <section class="section" id="timeline">
+      <h2 class="section-title">开发时间线</h2>
+      <ol class="timeline">
+        <li class="timeline-item">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <time class="timeline-time" datetime="2026-09">2026.09</time>
+          <p class="timeline-event">个人主页 V1 上线</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 7. 数字分身占位 -->
+    <section class="section" id="twin">
+      <h2 class="section-title">AI 数字分身</h2>
+      <div class="chat-shell" role="presentation">
+        <div class="chat-window">
+          <div class="bubble bot">你好，我是 SHAAARK 的 AI 分身</div>
+          <div class="bubble bot">我还在开发中，暂时不能回复你</div>
+          <div class="bubble bot">未来你可以在这里问我关于项目的问题</div>
+        </div>
+        <p class="chat-footer">AI 分身正在开发中，敬请期待</p>
+      </div>
+    </section>
+
+    <!-- 8. Contact 联系我 -->
+    <section class="section" id="contact">
+      <h2 class="section-title">联系我</h2>
+      <p class="contact-cta">欢迎交流 CS / BMI 交叉方向，或任何有趣的项目想法。</p>
+      <ul class="contact-list">
+        <li><strong>邮箱：</strong><a href="mailto:JessiQ1019@outlook.com">JessiQ1019@outlook.com</a></li>
+        <li><strong>GitHub：</strong><a href="https://github.com/Qixx-xx" target="_blank" rel="noopener">github.com/Qixx-xx</a></li>
+        <li><strong>微信：</strong>Jessica-qianjx</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- 9. Footer -->
+  <footer class="site-footer">
+    <p class="copyright">© <span id="year">2026</span> 钱家萱</p>
+    <nav class="footer-nav" aria-label="页脚导航">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

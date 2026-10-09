@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Deja Vu Gallery —— 钱家萱的休闲碎片，代码之外的投射。人在别人身上看到的，都是一种既视感。">
+  <title>Deja Vu Gallery · 既视感画廊</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 固定顶部导航 -->
+  <header class="site-header">
+    <a class="brand" href="#gallery-hero">Deja&nbsp;Vu&nbsp;Gallery</a>
+    <nav class="site-nav" id="gallery-nav" aria-label="画廊导航"></nav>
+    <a class="back-home" href="../index.html">← 返回主页</a>
+  </header>
+
+  <main>
+    <!-- 1. Gallery Hero / Intro -->
+    <section class="hero" id="gallery-hero">
+      <div class="hero-burst" aria-hidden="true"></div>
+
+      <!-- 蓝色眼睛特写（美漫） -->
+      <div class="hero-eye" aria-hidden="true">
+        <svg viewBox="0 0 118 78" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 39 Q59 -6 110 39 Q59 84 8 39 Z" fill="#fffaf0" stroke="#141414" stroke-width="4" stroke-linejoin="round"/>
+          <circle cx="59" cy="39" r="24" fill="#19a8cf" stroke="#141414" stroke-width="4"/>
+          <circle cx="59" cy="39" r="12" fill="#141414"/>
+          <circle cx="50" cy="31" r="4" fill="#fffaf0"/>
+          <!-- 虹膜网点 -->
+          <g fill="#0d6e8a">
+            <circle cx="43" cy="43" r="1.6"/><circle cx="52" cy="49" r="1.6"/><circle cx="63" cy="48" r="1.6"/><circle cx="71" cy="39" r="1.6"/><circle cx="67" cy="29" r="1.6"/>
+          </g>
+          <!-- 上睫毛 -->
+          <path d="M34 18 L40 26 M47 12 L51 24 M61 11 L62 23 M74 15 L74 26" stroke="#141414" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <p class="hero-entry">about me_dejavuGallery</p>
+      <h1 class="hero-title">Deja Vu Gallery</h1>
+
+      <!-- 爆炸电吉他 + 速度线 + 墨点 -->
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(-16 210 210)">
+            <!-- 琴头 -->
+            <rect x="197" y="30" width="26" height="54" rx="6" fill="#141414" stroke="#141414" stroke-width="5"/>
+            <circle cx="190" cy="44" r="4.5" fill="#e63b2e" stroke="#141414" stroke-width="3"/>
+            <circle cx="230" cy="44" r="4.5" fill="#e63b2e" stroke="#141414" stroke-width="3"/>
+            <circle cx="190" cy="64" r="4.5" fill="#e63b2e" stroke="#141414" stroke-width="3"/>
+            <circle cx="230" cy="64" r="4.5" fill="#e63b2e" stroke="#141414" stroke-width="3"/>
+            <!-- 琴颈 -->
+            <rect x="198" y="84" width="24" height="122" fill="#c78b3f" stroke="#141414" stroke-width="5"/>
+            <g stroke="#141414" stroke-width="3">
+              <line x1="198" y1="104" x2="222" y2="104"/>
+              <line x1="198" y1="124" x2="222" y2="124"/>
+              <line x1="198" y1="144" x2="222" y2="144"/>
+              <line x1="198" y1="164" x2="222" y2="164"/>
+              <line x1="198" y1="184" x2="222" y2="184"/>
+            </g>
+            <!-- 琴身（对称双缺角） -->
+            <path d="M196 206 C 160 208 138 230 140 268 C 142 298 160 318 186 324 Q 210 340 234 324 C 260 318 278 298 280 268 C 282 230 260 208 224 206 Z"
+                  fill="#ffcf00" stroke="#141414" stroke-width="6" stroke-linejoin="round"/>
+            <!-- 护板 -->
+            <path d="M158 240 L 206 246 L 210 302 L 152 294 Z" fill="#fffaf0" stroke="#141414" stroke-width="4" stroke-linejoin="round"/>
+            <!-- 拾音器 -->
+            <rect x="150" y="258" width="54" height="13" rx="3" fill="#141414"/>
+            <rect x="150" y="278" width="54" height="13" rx="3" fill="#141414"/>
+            <!-- 琴桥 -->
+            <rect x="154" y="298" width="46" height="8" rx="2" fill="#141414"/>
+            <!-- 琴弦 -->
+            <g stroke="#141414" stroke-width="1.6">
+              <line x1="203" y1="86" x2="203" y2="298"/>
+              <line x1="207" y1="86" x2="207" y2="298"/>
+              <line x1="211" y1="86" x2="211" y2="298"/>
+              <line x1="215" y1="86" x2="215" y2="298"/>
+            </g>
+          </g>
+          <!-- 飞溅墨点 -->
+          <g fill="#141414">
+            <circle cx="82" cy="120" r="7"/><circle cx="98" cy="106" r="4"/><circle cx="118" cy="128" r="3"/>
+            <circle cx="330" cy="150" r="8"/><circle cx="352" cy="136" r="4"/><circle cx="316" cy="132" r="3"/>
+            <circle cx="96" cy="300" r="5"/><circle cx="342" cy="318" r="6"/><circle cx="360" cy="300" r="3"/>
+          </g>
+          <!-- 碎片 -->
+          <g fill="#e63b2e" stroke="#141414" stroke-width="3" stroke-linejoin="round">
+            <path d="M64 200 l16 6 l-12 14 Z"/>
+            <path d="M350 210 l14 -8 l2 18 Z"/>
+            <path d="M120 330 l12 -10 l4 14 Z"/>
+          </g>
+          <g fill="#19a8cf" stroke="#141414" stroke-width="3" stroke-linejoin="round">
+            <path d="M300 70 l14 8 l-14 10 Z"/>
+            <path d="M60 260 l10 12 l-16 0 Z"/>
+          </g>
+        </svg>
+      </div>
+
+      <p class="hero-subtitle">钱家萱的休闲碎片 / 代码之外的投射</p>
+      <blockquote class="hero-quote">
+        “人在别人身上看到的都是一种既视感，是自己的投射，某种意义上我们只是在看自己。”
+      </blockquote>
+      <p class="hero-guide">这里不陈列结论，只陈列一些碎片。你看到什么，可能就是什么。</p>
+      <div class="hero-actions">
+        <a class="btn btn-ghost" href="../index.html">返回主页</a>
+        <a class="btn btn-primary" href="#music">向下滚动 ↓</a>
+      </div>
+    </section>
+
+    <!-- 2-9. 各展区由 main.js 依据数据模型渲染 -->
+    <div id="gallery-sections"></div>
+  </main>
+
+  <!-- 10. Footer -->
+  <footer class="site-footer" id="gallery-footer">
+    <p class="footer-mark">Deja Vu Gallery · 代码之外的碎片</p>
+    <nav class="footer-nav" id="footer-nav" aria-label="页脚导航"></nav>
+    <p class="copyright">
+      © <span id="year">2026</span> 钱家萱 · <a href="../index.html">返回主页</a>
+    </p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

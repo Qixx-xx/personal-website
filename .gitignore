@@ -1,0 +1,35 @@
+# ============================================================
+# 个人主页 · 部署精简版 .gitignore
+# 只提交「最新活跃版本」及其必要附件，其余全部忽略。
+#
+# 保留（部署必需）：
+#   index.html / style.css / main.js
+#   favicon.ico + favicon-16x16/32x32/192x192.png + apple-touch-icon.png
+#   .nojekyll
+#   assets/dorm-status-qr.jpg
+#   assets/mucha/{hero,about,projects,timeline,twin,contact}.jpg
+#   dejavu_gallery/{gallery.html, style.css, main.js, assets/placeholder.png}
+# ============================================================
+
+# ---- 工具 / 本地工作目录 ----
+.opencode/
+.deepworks/
+cache/
+uploads/
+prompts/
+working-log/
+
+# ---- 本地配置文件 ----
+opencode.jsonc
+
+# ---- 历史版本快照（主页）----
+index-v*.html
+main-v*.js
+style-v*.css
+
+# ---- 历史版本快照（dejavu_gallery）----
+dejavu_gallery/gallery-v*.html
+
+# ---- 历史 / 未被引用的资源 ----
+assets/placeholder.png
+assets/mucha/bg-*.jpg

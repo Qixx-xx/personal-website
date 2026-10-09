@@ -3,172 +3,475 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="钱家萱的个人主页 —— 脑机接口 × 计算机科学，喜欢折腾小玩意儿的兴趣驱动开发者。">
+  <meta name="description" content="钱家萱（一条傻鱼 SHAAARK）的个人主页 —— 脑机接口 × 计算机科学，喜欢折腾小玩意儿的兴趣驱动开发者。">
+  <meta name="theme-color" content="#1a1410">
   <title>SHAAARK · 一条傻鱼的个人主页</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-  <!-- 1. Header（固定顶部） -->
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- 字体：Cormorant Garamond（标题）+ Lora（正文） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- [修复2] 无 JS 兜底：入场态默认隐藏，无脚本时强制全部可见（信息零丢失） -->
+  <noscript>
+    <style>
+      .mask-inner,
+      [data-reveal] { transform: none !important; opacity: 1 !important; clip-path: none !important; transition: none !important; }
+    </style>
+  </noscript>
+</head>
+<body id="top">
+
+  <!-- [修改] 皮革纹理层（三层叠加：毛孔 / 纤维 / 高光） -->
+  <div class="leather-texture" aria-hidden="true"></div>
+  <div class="leather-fiber" aria-hidden="true"></div>
+  <div class="leather-sheen" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       内联 SVG 图标 sprite（仅保留必要的细线稿图标）
+       禁止手绘花卉/藤蔓/光环/剪影
+       ============================================================ -->
+  <svg class="svg-sprite" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-github" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"
+          d="M12 2.5a9.5 9.5 0 0 0-3 18.52c.475.087.65-.206.65-.458 0-.228-.008-.832-.012-1.633-2.67.58-3.233-1.287-3.233-1.287-.436-1.108-1.065-1.403-1.065-1.403-.87-.595.066-.583.066-.583.963.068 1.469.988 1.469.988.855 1.465 2.244 1.042 2.79.797.087-.62.335-1.042.609-1.282-2.13-.242-4.37-1.065-4.37-4.74 0-1.047.374-1.903.988-2.574-.099-.242-.428-1.217.094-2.537 0 0 .805-.258 2.637.983A9.18 9.18 0 0 1 12 6.87a9.18 9.18 0 0 1 2.4.323c1.83-1.241 2.633-.983 2.633-.983.524 1.32.195 2.295.096 2.537.615.671.987 1.527.987 2.574 0 3.685-2.244 4.496-4.38 4.733.344.296.65.881.65 1.775 0 1.282-.012 2.315-.012 2.63 0 .254.173.55.654.457A9.5 9.5 0 0 0 12 2.5z"/>
+      </symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M3.5 7.2l8.5 5.3 8.5-5.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="i-wechat" viewBox="0 0 24 24">
+        <path d="M9.3 4C5.6 4 2.7 6.3 2.7 9.1c0 1.6.9 3 2.3 4l-.6 1.8 2.1-1.1c.9.2 1.8.4 2.8.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M21.3 15.4c0-2.4-2.3-4.3-5.2-4.3s-5.2 1.9-5.2 4.3 2.3 4.3 5.2 4.3c.8 0 1.6-.1 2.3-.4l1.9 1-.5-1.6c1.1-.9 1.5-2 1.5-3.3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <circle cx="9.3" cy="9.1" r=".8" fill="currentColor"/>
+        <circle cx="13" cy="9.1" r=".8" fill="currentColor"/>
+        <circle cx="14.5" cy="15.4" r=".8" fill="currentColor"/>
+        <circle cx="18.3" cy="15.4" r=".8" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-fish" viewBox="0 0 80 40">
+        <path d="M12 20c10-10 30-12 46-6-6 12-6 24 0 36-15 6-35 4-46-6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M56 20l16-7v14z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <circle cx="24" cy="17" r="2.2" fill="currentColor"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ============================================================
+       1. Header（固定顶部，深墨玻璃）
+       ============================================================ -->
   <header class="site-header">
     <a class="brand" href="#top">SHAAARK</a>
     <nav class="site-nav" aria-label="主导航">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
+      <a href="#feedback">反馈</a>
     </nav>
     <a class="icon-link" href="https://github.com/Qixx-xx" target="_blank" rel="noopener" aria-label="GitHub 主页">
-      <span aria-hidden="true">⬛</span>
+      <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
     </a>
   </header>
 
-  <main id="top">
+  <main>
 
-    <!-- 2. Hero 首屏 -->
+    <!-- ============================================================
+         2. Hero 首屏（画作居中大图 + 标题毛玻璃卡）
+         画作：《黄道十二宫》 Zodiac
+         ============================================================ -->
     <section class="hero" id="home">
-      <h1 class="hero-name">一条傻鱼</h1>
-      <p class="hero-tagline">脑机接口 × 计算机科学，喜欢折腾小玩意儿的开发者</p>
-      <ul class="hero-tags">
-        <li>脑机接口</li>
-        <li>微信小程序</li>
-        <li>大语言模型</li>
-        <li>前端开发</li>
-      </ul>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects">查看项目</a>
-        <a class="btn btn-ghost" href="https://github.com/Qixx-xx" target="_blank" rel="noopener">GitHub</a>
+      <!-- [修改1] Hero 卡片覆盖画作底部签名区：删除 figcaption，卡片用负 margin 压住画作底部约 15%–20% -->
+      <!-- [修改2] 滚动入场：画作 clip-path 揭幕 + 卡片整体入场 + 主标题逐字遮罩上升 -->
+      <figure class="artwork hero-artwork">
+        <div class="artwork-frame" data-reveal>
+          <img src="assets/mucha/hero.jpg"
+               alt="阿尔丰斯·穆夏《黄道十二宫》"
+               fetchpriority="high">
+        </div>
+      </figure>
+
+      <div class="hero-card glass-panel" data-reveal style="--stagger: 0">
+        <h1 class="hero-name" aria-label="一条傻鱼">
+          <span class="mask" aria-hidden="true"><span class="mask-inner" data-reveal style="--stagger: 0">一</span></span><span class="mask" aria-hidden="true"><span class="mask-inner" data-reveal style="--stagger: 1">条</span></span><span class="mask" aria-hidden="true"><span class="mask-inner" data-reveal style="--stagger: 2">傻</span></span><span class="mask" aria-hidden="true"><span class="mask-inner" data-reveal style="--stagger: 3">鱼</span></span>
+        </h1>
+        <p class="hero-id" aria-hidden="true"><span class="mask"><span class="mask-inner" data-reveal style="--stagger: 1">SHAAARK</span></span></p>
+        <p class="hero-tagline"><span class="mask"><span class="mask-inner" data-reveal style="--stagger: 2">脑机接口 × 计算机科学，喜欢折腾小玩意儿的开发者</span></span></p>
+
+        <ul class="hero-tags" aria-label="技能标签">
+          <li data-reveal style="--stagger: 0">脑机接口</li>
+          <li data-reveal style="--stagger: 1">微信小程序</li>
+          <li data-reveal style="--stagger: 2">大语言模型</li>
+          <li data-reveal style="--stagger: 3">前端开发</li>
+        </ul>
+
+        <div class="hero-actions" data-reveal style="--stagger: 4">
+          <a class="btn btn-primary" href="#projects">查看项目</a>
+          <a class="btn btn-ghost" href="https://github.com/Qixx-xx" target="_blank" rel="noopener">GitHub</a>
+        </div>
       </div>
     </section>
 
-    <!-- 3. About 关于我 -->
-    <section class="section" id="about">
-      <h2 class="section-title">关于我</h2>
-      <div class="about-grid">
-        <article class="card">
-          <h3>身份</h3>
-          <p>脑机接口专业大一学生</p>
-        </article>
-        <article class="card">
-          <h3>方向</h3>
-          <p>CS / BMI 交叉方向</p>
-        </article>
-        <article class="card">
-          <h3>记忆点</h3>
-          <p>兴趣驱动，万事不求人</p>
-        </article>
-        <article class="card">
-          <h3>所在城市</h3>
-          <p>深圳，中国</p>
-        </article>
+    <!-- ============================================================
+         3. About 关于我（画作在左）
+         画作：《花卉·玫瑰》 La Rose
+         ============================================================ -->
+    <section class="gallery-section" id="about">
+      <div class="gallery-artwork">
+        <figure class="artwork">
+          <div class="artwork-frame" data-reveal>
+            <img src="assets/mucha/about.jpg"
+                 alt="阿尔丰斯·穆夏《花卉·玫瑰》"
+                 loading="lazy">
+          </div>
+          <figcaption class="artwork-caption" data-reveal style="--stagger: 1">Alphonse Mucha · 《花卉·玫瑰》</figcaption>
+        </figure>
       </div>
 
-      <!-- 5. 兴趣 / 技能（合并到 About 下方） -->
-      <div class="skills">
-        <h3 class="skills-title">兴趣 / 技能</h3>
-        <ul class="tag-cloud">
-          <li>脑机接口</li>
-          <li>微信小程序</li>
-          <li>大语言模型</li>
-          <li>前端开发</li>
-          <li>云开发</li>
-          <li>UI 设计</li>
+      <div class="gallery-content">
+        <h2 class="section-title"><span class="mask"><span class="mask-inner" data-reveal>关于我</span></span></h2>
+        <!-- [修改3] 哥特装饰：拱形分隔线（CSS 生成，全页 section 统一） -->
+        <div class="section-rule" data-reveal aria-hidden="true"></div>
+
+        <div class="info-cards">
+          <article class="card glass-panel" data-reveal style="--stagger: 0">
+            <h3><span class="mask"><span class="mask-inner" data-reveal>身份</span></span></h3>
+            <p>脑机接口专业大一学生</p>
+          </article>
+          <article class="card glass-panel" data-reveal style="--stagger: 1">
+            <h3><span class="mask"><span class="mask-inner" data-reveal>方向</span></span></h3>
+            <p>CS · BMI 交叉方向</p>
+          </article>
+          <article class="card glass-panel" data-reveal style="--stagger: 2">
+            <h3><span class="mask"><span class="mask-inner" data-reveal>记忆点</span></span></h3>
+            <p>兴趣驱动，万事不求人</p>
+          </article>
+          <article class="card glass-panel" data-reveal style="--stagger: 3">
+            <h3><span class="mask"><span class="mask-inner" data-reveal>所在城市</span></span></h3>
+            <p>深圳，中国</p>
+          </article>
+        </div>
+
+        <div class="skills" data-reveal>
+          <h3 class="skills-title"><span class="mask"><span class="mask-inner" data-reveal>兴趣 / 技能</span></span></h3>
+          <ul class="tag-cloud">
+            <li data-reveal style="--stagger: 0">脑机接口</li>
+            <li data-reveal style="--stagger: 1">微信小程序</li>
+            <li data-reveal style="--stagger: 2">大语言模型</li>
+            <li data-reveal style="--stagger: 3">前端开发</li>
+            <li data-reveal style="--stagger: 4">云开发</li>
+            <li data-reveal style="--stagger: 5">UI 设计</li>
+          </ul>
+        </div>
+
+        <p class="gallery-entry" data-reveal>
+          <a href="dejavu_gallery/gallery.html">about me_dejavuGallery</a>
+          <span class="gallery-entry-hint">代码之外的碎片，随便看看。</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. Projects 项目与作品（画作在右，镜像）
+         画作：《艺术·舞蹈》 La Danse
+         ============================================================ -->
+    <section class="gallery-section gallery-section--reverse" id="projects">
+      <div class="gallery-artwork">
+        <figure class="artwork">
+          <div class="artwork-frame" data-reveal>
+            <img src="assets/mucha/projects.jpg"
+                 alt="阿尔丰斯·穆夏《艺术·舞蹈》"
+                 loading="lazy">
+          </div>
+          <figcaption class="artwork-caption" data-reveal style="--stagger: 1">Alphonse Mucha · 《艺术·舞蹈》</figcaption>
+        </figure>
+      </div>
+
+      <div class="gallery-content">
+        <h2 class="section-title"><span class="mask"><span class="mask-inner" data-reveal>项目与作品</span></span></h2>
+        <div class="section-rule" data-reveal aria-hidden="true"></div>
+
+        <!-- 重点项目：宿舍状态栏 -->
+        <article class="featured glass-panel" data-reveal style="--stagger: 0">
+          <div class="featured-media">
+            <img src="assets/dorm-status-qr.jpg" alt="宿舍状态栏小程序码" loading="lazy" class="qr-code">
+          </div>
+          <div class="featured-info">
+            <h3><span class="mask"><span class="mask-inner" data-reveal>宿舍状态栏</span></span></h3>
+            <p>一款宿舍状态共享小程序，支持四人状态联动、值日轮换、寝室规定版本管理、意见反馈投票与换床申请，14天内从零到一完成开发，现已正式上线。</p>
+            <div class="featured-meta">
+              <span class="featured-badge">微信小程序 · 已上线</span>
+              <span class="featured-link">微信扫码即可体验</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 更多项目（构思中） -->
+        <div class="more-projects" data-reveal>
+          <h3 class="more-title"><span class="mask"><span class="mask-inner" data-reveal>更多项目 · 构思中</span></span></h3>
+          <div class="project-grid">
+            <article class="idea-card glass-panel" data-reveal style="--stagger: 0">
+              <h4><span class="mask"><span class="mask-inner" data-reveal>非线性学习工具</span></span></h4>
+              <p>用问问题构建思维导图，用思维导图重构知识体系</p>
+            </article>
+            <article class="idea-card glass-panel" data-reveal style="--stagger: 1">
+              <h4><span class="mask"><span class="mask-inner" data-reveal>词组卡网页版</span></span></h4>
+              <p>背词组的极简卡片工具</p>
+            </article>
+            <article class="idea-card glass-panel" data-reveal style="--stagger: 2">
+              <h4><span class="mask"><span class="mask-inner" data-reveal>AI 推理小说互动游戏</span></span></h4>
+              <p>如果可以把一本书变成交互式文字游戏</p>
+            </article>
+            <article class="idea-card glass-panel" data-reveal style="--stagger: 3">
+              <h4><span class="mask"><span class="mask-inner" data-reveal>命令行解谜网页游戏</span></span></h4>
+              <p>捡到一台 dos 老电脑……</p>
+            </article>
+          </div>
+        </div>
+
+        <a class="github-more" href="https://github.com/Qixx-xx" target="_blank" rel="noopener" data-reveal style="--stagger: 4">
+          <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+          访问我的 GitHub 查看全部仓库
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. 开发时间线（画作在左）
+         画作：《艺术·诗歌》 La Poesie
+         ============================================================ -->
+    <section class="gallery-section" id="timeline">
+      <div class="gallery-artwork">
+        <figure class="artwork">
+          <div class="artwork-frame" data-reveal>
+            <img src="assets/mucha/timeline.jpg"
+                 alt="阿尔丰斯·穆夏《艺术·诗歌》"
+                 loading="lazy">
+          </div>
+          <figcaption class="artwork-caption" data-reveal style="--stagger: 1">Alphonse Mucha · 《艺术·诗歌》</figcaption>
+        </figure>
+      </div>
+
+      <div class="gallery-content">
+        <h2 class="section-title"><span class="mask"><span class="mask-inner" data-reveal>开发时间线</span></span></h2>
+        <div class="section-rule" data-reveal aria-hidden="true"></div>
+
+        <ol class="timeline">
+          <li class="timeline-item" data-reveal style="--stagger: 0">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-body">
+              <time class="timeline-time" datetime="2026-09">2026.09</time>
+              <p class="timeline-event">个人主页 V1 上线</p>
+            </div>
+          </li>
+          <li class="timeline-item" data-reveal style="--stagger: 1">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-body">
+              <time class="timeline-time" datetime="2026-09-27">2026.09.27</time>
+              <p class="timeline-event">宿舍状态栏小程序上线</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. AI 数字分身（画作在右，镜像）
+         画作：《月亮与星星·月亮》 The Moon
+         ============================================================ -->
+    <section class="gallery-section gallery-section--reverse" id="twin">
+      <div class="gallery-artwork">
+        <figure class="artwork">
+          <div class="artwork-frame" data-reveal>
+            <img src="assets/mucha/twin.jpg"
+                 alt="阿尔丰斯·穆夏《月亮与星星·月亮》"
+                 loading="lazy">
+          </div>
+          <figcaption class="artwork-caption" data-reveal style="--stagger: 1">Alphonse Mucha · 《月亮与星星·月亮》</figcaption>
+        </figure>
+      </div>
+
+      <div class="gallery-content">
+        <h2 class="section-title"><span class="mask"><span class="mask-inner" data-reveal>AI 数字分身</span></span></h2>
+        <div class="section-rule" data-reveal aria-hidden="true"></div>
+
+        <div class="chat-shell" role="presentation">
+          <div class="chat-window glass-panel" data-reveal style="--stagger: 0">
+            <div class="bubble bot">
+              <svg class="bot-avatar" aria-hidden="true"><use href="#i-fish"/></svg>
+              <p>你好，我是 SHAAARK 的 AI 分身</p>
+            </div>
+            <div class="bubble bot">
+              <svg class="bot-avatar" aria-hidden="true"><use href="#i-fish"/></svg>
+              <p>我还在开发中，暂时不能回复你</p>
+            </div>
+            <div class="bubble bot">
+              <svg class="bot-avatar" aria-hidden="true"><use href="#i-fish"/></svg>
+              <p>未来你可以在这里问我关于项目的问题</p>
+            </div>
+          </div>
+          <p class="chat-footer" data-reveal style="--stagger: 1">AI 分身正在开发中，敬请期待</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. Contact 联系我（画作在左）
+         画作：《艺术·音乐》 La Musique
+         ============================================================ -->
+    <section class="gallery-section" id="contact">
+      <div class="gallery-artwork">
+        <figure class="artwork">
+          <div class="artwork-frame" data-reveal>
+            <img src="assets/mucha/contact.jpg"
+                 alt="阿尔丰斯·穆夏《艺术·音乐》"
+                 loading="lazy">
+          </div>
+          <figcaption class="artwork-caption" data-reveal style="--stagger: 1">Alphonse Mucha · 《艺术·音乐》</figcaption>
+        </figure>
+      </div>
+
+      <div class="gallery-content">
+        <h2 class="section-title"><span class="mask"><span class="mask-inner" data-reveal>联系我</span></span></h2>
+        <div class="section-rule" data-reveal aria-hidden="true"></div>
+        <p class="contact-cta" data-reveal style="--stagger: 0">欢迎交流 CS / BMI 交叉方向，或任何有趣的项目想法。</p>
+
+        <ul class="contact-list">
+          <li class="glass-panel" data-reveal style="--stagger: 0">
+            <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+            <span class="contact-label">邮箱</span>
+            <a href="mailto:JessiQ1019@outlook.com">JessiQ1019@outlook.com</a>
+          </li>
+          <li class="glass-panel" data-reveal style="--stagger: 1">
+            <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+            <span class="contact-label">GitHub</span>
+            <a href="https://github.com/Qixx-xx" target="_blank" rel="noopener">github.com/Qixx-xx</a>
+          </li>
+          <li class="glass-panel" data-reveal style="--stagger: 2">
+            <svg class="icon" aria-hidden="true"><use href="#i-wechat"/></svg>
+            <span class="contact-label">微信</span>
+            <span class="contact-value">Jessica-qianjx</span>
+          </li>
         </ul>
       </div>
     </section>
 
-    <!-- 4. Projects 项目与作品 -->
-    <section class="section" id="projects">
-      <h2 class="section-title">项目与作品</h2>
+    <!-- ============================================================
+         8. Feedback 反馈（全宽信纸 · 单列 · 无画作）
+         ============================================================ -->
+    <!-- [新增] 反馈区 -->
+    <section class="feedback" id="feedback">
+      <div class="feedback-letter" data-reveal>
+        <svg class="feedback-quill" viewBox="0 0 60 120" aria-hidden="true" focusable="false">
+          <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M30 10 C 26 40 26 80 30 110"/>
+            <path d="M30 20 C 18 30 14 50 20 70 C 24 60 28 40 30 20 Z"/>
+            <path d="M30 20 C 42 30 46 50 40 70 C 36 60 32 40 30 20 Z"/>
+            <path d="M30 110 L 28 116 L 30 118 L 32 116 Z"/>
+          </g>
+        </svg>
 
-      <!-- 重点项目：微信小程序 -->
-      <article class="featured">
-        <div class="featured-screenshot">
-          <img src="assets/placeholder.png" alt="宿舍状态栏小程序截图占位图">
-        </div>
-        <div class="featured-info">
-          <h3>宿舍状态栏</h3>
-          <p>一款宿舍状态共享小程序，支持四人状态联动、值日轮换、寝室规定版本管理、意见反馈投票与换床申请，14天内从零到一完成开发。</p>
-          <div class="featured-meta">
-            <span class="featured-badge">微信小程序 · 重点项目</span>
-            <span class="featured-link">小程序码即将上线</span>
+        <h2 class="section-title"><span class="mask"><span class="mask-inner" data-reveal>留下反馈</span></span></h2>
+        <div class="section-rule" data-reveal aria-hidden="true"></div>
+
+        <form class="feedback-form" novalidate>
+          <div class="feedback-row">
+            <div class="feedback-field">
+              <label class="field-label" for="fb-name">姓名 <span class="field-hint">（选填）</span></label>
+              <input type="text" id="fb-name" name="name" placeholder="可留空" autocomplete="name">
+            </div>
+            <div class="feedback-field">
+              <label class="field-label" for="fb-email">邮箱 <span class="field-hint">（选填）</span></label>
+              <input type="email" id="fb-email" name="email" placeholder="选填，用于回复" autocomplete="email">
+            </div>
           </div>
-        </div>
-      </article>
 
-      <!-- 更多项目（构思中） -->
-      <div class="more-projects">
-        <h3>更多项目 · 构思中</h3>
-        <div class="project-grid">
-          <article class="repo-card">
-            <h4>非线性学习工具</h4>
-            <p>用问问题构建思维导图，用思维导图重构知识体系</p>
-          </article>
-          <article class="repo-card">
-            <h4>词组卡网页版</h4>
-            <p>背词组的极简卡片工具</p>
-          </article>
-          <article class="repo-card">
-            <h4>AI 推理小说互动游戏</h4>
-            <p>如果可以把一本书变成交互式文字游戏</p>
-          </article>
-          <article class="repo-card">
-            <h4>命令行解谜网页游戏</h4>
-            <p>捡到一台 dos 老电脑……</p>
-          </article>
-        </div>
+          <fieldset class="feedback-types">
+            <legend class="field-label">反馈类型 <span class="required" aria-hidden="true">*</span></legend>
+            <div class="type-pills">
+              <label class="type-pill">
+                <input type="radio" name="type" value="Bug 反馈" required>
+                <span>Bug 反馈</span>
+              </label>
+              <label class="type-pill">
+                <input type="radio" name="type" value="功能建议" required>
+                <span>功能建议</span>
+              </label>
+              <label class="type-pill">
+                <input type="radio" name="type" value="内容纠错" required>
+                <span>内容纠错</span>
+              </label>
+              <label class="type-pill">
+                <input type="radio" name="type" value="其他" required>
+                <span>其他</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="feedback-field">
+            <label class="field-label" for="fb-content">正文 <span class="required" aria-hidden="true">*</span></label>
+            <textarea id="fb-content" name="content" placeholder="请写下你的想法……" required></textarea>
+          </div>
+
+          <div class="feedback-rating" role="radiogroup" aria-label="满意度评分">
+            <span class="field-label">满意度</span>
+            <div class="stars">
+              <input type="radio" name="rating" value="5" id="star5" checked>
+              <label for="star5" aria-label="5 星">★</label>
+              <input type="radio" name="rating" value="4" id="star4">
+              <label for="star4" aria-label="4 星">★</label>
+              <input type="radio" name="rating" value="3" id="star3">
+              <label for="star3" aria-label="3 星">★</label>
+              <input type="radio" name="rating" value="2" id="star2">
+              <label for="star2" aria-label="2 星">★</label>
+              <input type="radio" name="rating" value="1" id="star1">
+              <label for="star1" aria-label="1 星">★</label>
+            </div>
+          </div>
+
+          <div class="feedback-actions">
+            <button type="submit" class="feedback-submit">
+              <span>提交反馈</span>
+            </button>
+          </div>
+
+          <p class="feedback-note">
+            提交会跳转到 GitHub Issues 页面。没有 GitHub 账号？也可以直接发邮件到
+            <a href="mailto:JessiQ1019@outlook.com">JessiQ1019@outlook.com</a>。
+          </p>
+        </form>
       </div>
-
-      <a class="github-more" href="https://github.com/Qixx-xx" target="_blank" rel="noopener">
-        <span aria-hidden="true">⬛</span> 访问我的 GitHub 查看全部仓库
-      </a>
-    </section>
-
-    <!-- 6. 开发时间线 -->
-    <section class="section" id="timeline">
-      <h2 class="section-title">开发时间线</h2>
-      <ol class="timeline">
-        <li class="timeline-item">
-          <span class="timeline-dot" aria-hidden="true"></span>
-          <time class="timeline-time" datetime="2026-09">2026.09</time>
-          <p class="timeline-event">个人主页 V1 上线</p>
-        </li>
-      </ol>
-    </section>
-
-    <!-- 7. 数字分身占位 -->
-    <section class="section" id="twin">
-      <h2 class="section-title">AI 数字分身</h2>
-      <div class="chat-shell" role="presentation">
-        <div class="chat-window">
-          <div class="bubble bot">你好，我是 SHAAARK 的 AI 分身</div>
-          <div class="bubble bot">我还在开发中，暂时不能回复你</div>
-          <div class="bubble bot">未来你可以在这里问我关于项目的问题</div>
-        </div>
-        <p class="chat-footer">AI 分身正在开发中，敬请期待</p>
-      </div>
-    </section>
-
-    <!-- 8. Contact 联系我 -->
-    <section class="section" id="contact">
-      <h2 class="section-title">联系我</h2>
-      <p class="contact-cta">欢迎交流 CS / BMI 交叉方向，或任何有趣的项目想法。</p>
-      <ul class="contact-list">
-        <li><strong>邮箱：</strong><a href="mailto:JessiQ1019@outlook.com">JessiQ1019@outlook.com</a></li>
-        <li><strong>GitHub：</strong><a href="https://github.com/Qixx-xx" target="_blank" rel="noopener">github.com/Qixx-xx</a></li>
-        <li><strong>微信：</strong>Jessica-qianjx</li>
-      </ul>
     </section>
   </main>
 
-  <!-- 9. Footer -->
+  <!-- ============================================================
+       8. Footer（比正文区更暗）
+       ============================================================ -->
+  <!-- [修改3] 哥特装饰：Footer 顶部四叶饰分隔线（CSS 生成） -->
   <footer class="site-footer">
-    <p class="copyright">© <span id="year">2026</span> 钱家萱</p>
-    <nav class="footer-nav" aria-label="页脚导航">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="footer-inner">
+      <p class="copyright">© <span id="year">2026</span> 钱家萱</p>
+      <nav class="footer-nav" aria-label="页脚导航">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="#feedback">反馈</a>
+      </nav>
+    </div>
   </footer>
+
+  <!-- [新增] 反馈区 Toast（毛玻璃感谢弹窗，不在表单内） -->
+  <div class="feedback-toast" role="status" aria-live="polite" aria-atomic="true">
+    <span class="toast-icon" aria-hidden="true">✦</span>
+    <span class="toast-text">感谢你的反馈！</span>
+  </div>
 
   <script src="main.js"></script>
 </body>
